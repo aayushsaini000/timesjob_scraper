@@ -8,7 +8,7 @@ mongo = db.init_db()
 
 #----------Import schedulers functions from files----------
 
-from app.chainguardians_scheduler import Timesjobs,accountjobs,HRjobs,Salesjobs,marketingjobs,customerjobs,legaljobs,Teachingjobs
+from app.chainguardians_scheduler import Timesjobs,accountjobs,HRjobs,Salesjobs,marketingjobs,customerjobs,legaljobs,Teachingjobs,naukri_date_change
 
 
 #----------created app functionality----------
@@ -39,6 +39,11 @@ def create_app(test_config=None):
 
 
 #-----------Date time Settings of chainguardians schedulers--------------
+
+
+    naukri_date_change_scheduler = BackgroundScheduler()
+    naukri_date_change_scheduler.add_job(naukri_date_change, trigger='cron', day_of_week='mon-sat', hour=00,minute=5)
+    naukri_date_change_scheduler.start()
 
     Timesjobs_scheduler = BackgroundScheduler()
     Timesjobs_scheduler.add_job(Timesjobs, trigger='cron', day_of_week='mon-sat', hour=20,minute=00)
@@ -84,3 +89,4 @@ def create_app(test_config=None):
         customerjobs_scheduler.shutdown()
         legaljobs_scheduler.shutdown()
         Teachingjobs_scheduler.shutdown()
+        naukri_date_change_scheduler.shutdown()

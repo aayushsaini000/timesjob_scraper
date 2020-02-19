@@ -5,8 +5,8 @@ from app.util import serialize_doc
 from app import mongo
 import datetime
 import dateutil.parser
-
-
+import pymongo
+from pymongo import MongoClient
 #--------Scheduler for fetching chainguardians assests details--------
 #it
 #account
@@ -26,6 +26,24 @@ urls = ['https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&loc
 '''
              #'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=22$&txtKeywords=&pSize=1000&pIndex='+str(cou)+'',
             #'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=34$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
+client = MongoClient("mongodb+srv://root:0vXPeLcPxME40Ydv@cluster0-v8o7t.mongodb.net/jobs_scraper?retryWrites=true&w=majority")
+temp_db = client.jobs_scraper
+
+def naukri_date_change():
+    print("running")
+    mycryptoheroes_records = temp_db.jobs_details.find({})
+    print("worked")
+    mycryptoheroes_records = [serialize_doc(mycryptoheroes_record) for mycryptoheroes_record in mycryptoheroes_records]
+    print(len(mycryptoheroes_records))
+    for mycryptoheroes_record in mycryptoheroes_records:
+        createdDate = mycryptoheroes_record['createdDate']
+        title = mycryptoheroes_record['title']
+        staticCompanyName = mycryptoheroes_record['staticCompanyName']
+        date_time = dateutil.parser.parse(createdDate)
+        job_object = dict(mycryptoheroes_record)
+        job_object['createdDate'] = date_time
+        checking = mongo.db.naukrijobs_data.update({"title":title,"staticCompanyName":staticCompanyName},{"$set":dict(job_object)},upsert=True)
+
 
 
 def Timesjobs():
@@ -198,3 +216,5 @@ def Teachingjobs():
             job_object['catg_key'] = "Teaching Education"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
+
+
