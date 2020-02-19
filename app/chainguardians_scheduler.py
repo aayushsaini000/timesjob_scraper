@@ -33,7 +33,7 @@ def Timesjobs():
     #urls = ['https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=35$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
     #    ]
     #for url in urls:
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=35$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -51,7 +51,7 @@ def Timesjobs():
 
 def accountjobs():
     print("accountjobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=11$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -69,7 +69,7 @@ def accountjobs():
 
 def HRjobs():
     print("HRjobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=20$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -87,7 +87,7 @@ def HRjobs():
 
 def Salesjobs():
     print("Salesjobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=32$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -106,7 +106,7 @@ def Salesjobs():
 
 def marketingjobs():
     print("marketingjobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=23$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -124,7 +124,7 @@ def marketingjobs():
 
 def customerjobs():
     print("customerjobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=25$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -142,7 +142,7 @@ def customerjobs():
 
 def legaljobs():
     print("legaljobs")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=22$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
@@ -160,7 +160,7 @@ def legaljobs():
 
 def Teachingjobs():
     print("Teaching")
-    for cou in range(0,50):
+    for cou in range(0,500):
         working_url = 'https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&locationnames=&aosValues=&sortby=I&from=filter&faids=34$&txtKeywords=&pSize=1000&pIndex='+str(cou)+''
         #contract_url=url.replace("{{token_id}}",''+str(assetId)+'')
         assets = requests.get(url=working_url)
