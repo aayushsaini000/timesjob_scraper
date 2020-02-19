@@ -4,7 +4,7 @@ from app.util import serialize_doc
 #from app.config import chainguardians_api_endpoint,chainguardians_le_api_endpoint
 from app import mongo
 import datetime
-
+import dateutil.parser
 
 
 #--------Scheduler for fetching chainguardians assests details--------
@@ -43,7 +43,10 @@ def Timesjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "software development"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -61,7 +64,10 @@ def accountjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "accounts"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -78,8 +84,11 @@ def HRjobs():
         for job in jobs:
             companyName = job['companyName']
             Location = job['Location']
-            adId = job['adId'] 
+            adId = job['adId']
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "HR Recruitment"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -97,7 +106,10 @@ def Salesjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "Sales"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -116,7 +128,10 @@ def marketingjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "marketing"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -134,7 +149,10 @@ def customerjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "customer service"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -152,7 +170,10 @@ def legaljobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "legal"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
@@ -170,7 +191,10 @@ def Teachingjobs():
             companyName = job['companyName']
             Location = job['Location']
             adId = job['adId'] 
+            expiry = job['expiry']
+            date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
+            job_object['expiry'] = date_time
             job_object['catg_key'] = "Teaching Education"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)

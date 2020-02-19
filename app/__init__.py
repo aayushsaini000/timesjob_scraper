@@ -41,35 +41,35 @@ def create_app(test_config=None):
 #-----------Date time Settings of chainguardians schedulers--------------
 
     Timesjobs_scheduler = BackgroundScheduler()
-    Timesjobs_scheduler.add_job(Timesjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    Timesjobs_scheduler.add_job(Timesjobs, trigger='cron', day_of_week='mon-sat', hour=20,minute=00)
     Timesjobs_scheduler.start()
 
     accountjobs_scheduler = BackgroundScheduler()
-    accountjobs_scheduler.add_job(accountjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    accountjobs_scheduler.add_job(accountjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     accountjobs_scheduler.start()
 
     HRjobs_scheduler = BackgroundScheduler()
-    HRjobs_scheduler.add_job(HRjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    HRjobs_scheduler.add_job(HRjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     HRjobs_scheduler.start()
 
     Salesjobs_scheduler = BackgroundScheduler()
-    Salesjobs_scheduler.add_job(Salesjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    Salesjobs_scheduler.add_job(Salesjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     Salesjobs_scheduler.start()
 
     marketingjobs_scheduler = BackgroundScheduler()
-    marketingjobs_scheduler.add_job(marketingjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    marketingjobs_scheduler.add_job(marketingjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     marketingjobs_scheduler.start()
 
     customerjobs_scheduler = BackgroundScheduler()
-    customerjobs_scheduler.add_job(customerjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    customerjobs_scheduler.add_job(customerjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     customerjobs_scheduler.start()
 
     legaljobs_scheduler = BackgroundScheduler()
-    legaljobs_scheduler.add_job(legaljobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    legaljobs_scheduler.add_job(legaljobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     legaljobs_scheduler.start()
 
     Teachingjobs_scheduler = BackgroundScheduler()
-    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=15,minute=55)
+    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
     Teachingjobs_scheduler.start()
 
 
