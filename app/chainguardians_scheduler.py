@@ -233,20 +233,22 @@ def Teachingjobs():
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
 """
+
 def Teachingjobs():
     print("running")
-    records = mongo.db.emailStored.find()
+    records = mongo.db.emailStored.find({"cvParsedInfo":{"$exists":True},"cvParsedAI":True})
     records = [serialize_doc(record) for record in records]
-    print(records)
+    print(len(records))
     for recor in records:
         print("241")
         if "cvParsedInfo" in recor:
             print("243")
             idd = recor['_id']
             data=recor['cvParsedInfo']
-            s1 = json.dumps(data)
-            parsed_json = (json.loads(s1))
+            #s1 = json.dumps(data)
+            parsed_json = (json.loads(data))
             print(idd)
+            #da = eval(parsed_json)
             ret = mongo.db.emailStored.update({"_id":idd} ,{
                             "$set":{
                                     "cvParsedInfo":parsed_json

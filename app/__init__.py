@@ -74,7 +74,7 @@ def create_app(test_config=None):
     legaljobs_scheduler.start()
 
     Teachingjobs_scheduler = BackgroundScheduler()
-    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=11,minute=49)
+    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=12,minute=46)
     Teachingjobs_scheduler.start()
 
 
