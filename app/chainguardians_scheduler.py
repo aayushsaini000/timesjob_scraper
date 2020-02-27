@@ -3,10 +3,13 @@ import requests
 from app.util import serialize_doc
 #from app.config import chainguardians_api_endpoint,chainguardians_le_api_endpoint
 from app import mongo
-import datetime
-import dateutil.parser
+#import datetime
+#import dateutil.parser
 import pymongo
+
 from pymongo import MongoClient
+import json
+
 #--------Scheduler for fetching chainguardians assests details--------
 #it
 #account
@@ -29,6 +32,7 @@ urls = ['https://jobbuzz.timesjobs.com/jobbuzz/loadMoreJobs.json?companyIds=&loc
 client = MongoClient("mongodb+srv://root:0vXPeLcPxME40Ydv@cluster0-v8o7t.mongodb.net/jobs_scraper?retryWrites=true&w=majority")
 temp_db = client.jobs_scraper
 
+'''
 def naukri_date_change():
     print("running")
     mycryptoheroes_records = temp_db.jobs_details.find({})
@@ -43,7 +47,17 @@ def naukri_date_change():
         job_object = dict(mycryptoheroes_record)
         job_object['createdDate'] = date_time
         checking = mongo.db.naukrijobs_data.update({"title":title,"staticCompanyName":staticCompanyName},{"$set":dict(job_object)},upsert=True)
+'''
 
+def naukri_date_change():
+    print("running")
+    mycryptoheroes_records = mongo.db.timesjobs_data.find({})
+    mycryptoheroes_records = [serialize_doc(mycryptoheroes_record) for mycryptoheroes_record in mycryptoheroes_records]
+    print(len(mycryptoheroes_records))
+    for mycryptoheroes_record in mycryptoheroes_records:
+        key = mycryptoheroes_record['keySkills']
+        for ke in key:
+            print(ke)
 
 
 def Timesjobs():
@@ -197,6 +211,8 @@ def legaljobs():
         print("============================================================already exists=============================================",cou)
 
 
+
+"""
 def Teachingjobs():
     print("Teaching")
     for cou in range(0,500):
@@ -216,5 +232,23 @@ def Teachingjobs():
             job_object['catg_key'] = "Teaching Education"
             checking = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
         print("============================================================already exists=============================================",cou)
-
-
+"""
+def Teachingjobs():
+    print("running")
+    records = mongo.db.emailStored.find()
+    records = [serialize_doc(record) for record in records]
+    print(records)
+    for recor in records:
+        print("241")
+        if "cvParsedInfo" in recor:
+            print("243")
+            idd = recor['_id']
+            data=recor['cvParsedInfo']
+            s1 = json.dumps(data)
+            parsed_json = (json.loads(s1))
+            print(idd)
+            ret = mongo.db.emailStored.update({"_id":idd} ,{
+                            "$set":{
+                                    "cvParsedInfo":parsed_json
+                                  
+                            }})
