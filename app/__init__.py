@@ -8,7 +8,7 @@ mongo = db.init_db()
 
 #----------Import schedulers functions from files----------
 
-from app.chainguardians_scheduler import Timesjobs,accountjobs,HRjobs,Salesjobs,marketingjobs,customerjobs,legaljobs,Teachingjobs,naukri_date_change
+from app.JobsData import ItJobs,accountjobs,HRjobs,Salesjobs,marketingjobs,customerjobs,legaljobs,Teachingjobs
 
 
 #----------created app functionality----------
@@ -33,55 +33,51 @@ def create_app(test_config=None):
 
     db.get_db(mongo=mongo, app=app)
 
-    from app.api import fetch
-
-    app.register_blueprint(fetch.bp)
 
 
-#-----------Date time Settings of chainguardians schedulers--------------
 
 
-    naukri_date_change_scheduler = BackgroundScheduler()
-    #naukri_date_change_scheduler.add_job(naukri_date_change, trigger='cron', day_of_week='mon-sat', hour=16,minute=39)
-    naukri_date_change_scheduler.start()
+#-----------Cront running Date time Settings of schedulers--------------
 
-    Timesjobs_scheduler = BackgroundScheduler()
-    #Timesjobs_scheduler.add_job(Timesjobs, trigger='cron', day_of_week='mon-sat', hour=20,minute=00)
-    Timesjobs_scheduler.start()
+
+
+    ItJobs_scheduler = BackgroundScheduler()
+    ItJobs_scheduler.add_job(ItJobs, trigger='cron', day_of_week='mon-sat', hour=00,minute=55)
+    ItJobs_scheduler.start()
 
     accountjobs_scheduler = BackgroundScheduler()
-    #accountjobs_scheduler.add_job(accountjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    accountjobs_scheduler.add_job(accountjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=34)
     accountjobs_scheduler.start()
 
     HRjobs_scheduler = BackgroundScheduler()
-    #HRjobs_scheduler.add_job(HRjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    HRjobs_scheduler.add_job(HRjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=36)
     HRjobs_scheduler.start()
 
     Salesjobs_scheduler = BackgroundScheduler()
-    #Salesjobs_scheduler.add_job(Salesjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    Salesjobs_scheduler.add_job(Salesjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=38)
     Salesjobs_scheduler.start()
 
     marketingjobs_scheduler = BackgroundScheduler()
-    #marketingjobs_scheduler.add_job(marketingjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    marketingjobs_scheduler.add_job(marketingjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=39)
     marketingjobs_scheduler.start()
 
     customerjobs_scheduler = BackgroundScheduler()
-    #customerjobs_scheduler.add_job(customerjobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    customerjobs_scheduler.add_job(customerjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=40)
     customerjobs_scheduler.start()
 
     legaljobs_scheduler = BackgroundScheduler()
-    #legaljobs_scheduler.add_job(legaljobs, trigger='cron', day_of_week='mon-sun', hour=20,minute=00)
+    legaljobs_scheduler.add_job(legaljobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=41)
     legaljobs_scheduler.start()
 
     Teachingjobs_scheduler = BackgroundScheduler()
-    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=12,minute=46)
+    Teachingjobs_scheduler.add_job(Teachingjobs, trigger='cron', day_of_week='mon-sun', hour=00,minute=42)
     Teachingjobs_scheduler.start()
 
 
     try:
         return app
     except:   
-        Timesjobs_scheduler.shutdown()
+        ItJobs_scheduler.shutdown()
         accountjobs_scheduler.shutdown()
         HRjobs_scheduler.shutdown()
         Salesjobs_scheduler.shutdown()
@@ -89,4 +85,3 @@ def create_app(test_config=None):
         customerjobs_scheduler.shutdown()
         legaljobs_scheduler.shutdown()
         Teachingjobs_scheduler.shutdown()
-        naukri_date_change_scheduler.shutdown()

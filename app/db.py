@@ -13,4 +13,3 @@ def get_db(app, mongo):
     mongo.init_app(app)
 
 
-#"mongodb://localhost:27017/currency"
