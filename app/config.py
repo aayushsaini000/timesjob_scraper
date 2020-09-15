@@ -1,7 +1,7 @@
 
 #-----------Working mongo URI-----------
 
-MongoUri =  "mongodb+srv://root:0vXPeLcPxME40Ydv@cluster0-v8o7t.mongodb.net/chainguardians?retryWrites=true&w=majority"
+MongoUri =  "mongodb://root:recruitai567@116.202.234.182:27070/recruit_naurki?authSource=admin"
 
 
 

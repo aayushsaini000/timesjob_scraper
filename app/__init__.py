@@ -9,7 +9,7 @@ mongo = db.init_db()
 #----------Import schedulers functions from files----------
 
 from app.JobsData import ItJobs,accountjobs,HRjobs,Salesjobs,marketingjobs,customerjobs,legaljobs,Teachingjobs
-
+from app.Naukrijobs import NaukriJobs
 
 #----------created app functionality----------
 
@@ -39,6 +39,9 @@ def create_app(test_config=None):
 
 #-----------Cront running Date time Settings of schedulers--------------
 
+    NaukriJobs_scheduler = BackgroundScheduler()
+    NaukriJobs_scheduler.add_job(NaukriJobs, trigger='cron', day_of_week='mon-sat', hour=2,minute=2)
+    NaukriJobs_scheduler.start()
 
 
     ItJobs_scheduler = BackgroundScheduler()
@@ -85,3 +88,4 @@ def create_app(test_config=None):
         customerjobs_scheduler.shutdown()
         legaljobs_scheduler.shutdown()
         Teachingjobs_scheduler.shutdown()
+        NaukriJobs_scheduler.shutdown()

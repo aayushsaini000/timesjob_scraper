@@ -55,7 +55,7 @@ def accountjobs():
             date_time = dateutil.parser.parse(expiry)
             job_object = dict(job)
             job_object['expiry'] = date_time
-            job_object['catg_key'] = "acpagecountnts"
+            job_object['catg_key'] = "accountjobs"
             UpdatingData = mongo.db.timesjobs_data.update({"companyName":companyName,"Location":Location,"adId":adId},{"$set":dict(job_object)},upsert=True)
 
 
